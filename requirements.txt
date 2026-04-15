@@ -1,0 +1,10 @@
+#datasethttps://www.kaggle.com/datasets/joaquimof/bratsminidataset
+streamlit
+#torch
+numpy
+nibabel
+plotly
+scikit-image
+monai
+einops
+matplotlib
