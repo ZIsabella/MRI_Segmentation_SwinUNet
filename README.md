@@ -1,137 +1,173 @@
-MRI_Segmentation_SwinUNet
-A complete deep‑learning pipeline for MRI segmentation using a SwinUNet architecture in PyTorch.
+# 🧠 MRI Segmentation with SwinUNet (PyTorch)
 
-Includes preprocessing, training, evaluation, inference, visualization, and a web app.
+A complete deep learning pipeline for 3D medical image segmentation using the **SwinUNet architecture** implemented in PyTorch.
 
-📌 Overview
-MRI_Segmentation_SwinUNet provides a full end‑to‑end framework for medical image segmentation using the SwinUNet architecture.
+---
 
-It contains clean modular code for:
+## 📌 Overview
 
-MRI preprocessing and normalization
-SwinUNet model architecture
-Training with checkpointing
-Evaluation metrics (Dice, IoU, etc.)
-Inference on new MRI scans
-Visualization utilities
-Optional dataset organization (e.g., BRATS)
-A web interface for running the model interactively
-The project can be used for research, production prototypes, and medical AI experimentation.
+This project provides an **end-to-end framework** for MRI segmentation, including:
 
-📁 Project Structure
-text
+* Data preprocessing & normalization
+* SwinUNet model architecture
+* Training with checkpointing
+* Evaluation (Dice, IoU, etc.)
+* Inference on new MRI scans
+* Visualization tools
+* Optional dataset organization (e.g., BraTS)
+* Interactive web application
+
+Designed for **research, prototyping, and medical AI applications**.
+
+---
+
+## 📁 Project Structure
+
+```
 MRI_Segmentation_SwinUNet/
-├── main.py               # Entry point for running the system
-├── train.py              # Training script
-├── train_utils.py        # Training helpers (loops, checkpoints, logs)
-├── models.py             # SwinUNet architecture and related models
-├── evaluation.py         # Model evaluation and metrics
-├── inference.py          # Inference on new MRI images
-├── preprocessing.py      # Preprocessing pipeline
-├── visualization.py      # Plots, prediction visualization
-├── organize_brats.py     # Dataset preparation (optional)
-├── app.py                # Web app (Flask/FastAPI/Streamlit)
-├── requirements.txt      # Dependencies
-└── README.md             # This file
-🚀 Quick Start
-1. Install Dependencies
-bash
-git clone https://github.com/<username>/MRI_Segmentation_SwinUNet.git
+│
+├── main.py
+├── train.py
+├── train_utils.py
+├── models.py
+├── evaluation.py
+├── inference.py
+├── preprocessing.py
+├── visualization.py
+├── organize_brats.py
+├── app.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/MRI_Segmentation_SwinUNet.git
 cd MRI_Segmentation_SwinUNet
+```
+
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
-📦 Dataset Preparation
-If you are using BRATS or similar MRI datasets:
+```
 
-bash
+---
+
+## 📦 Dataset Preparation
+
+```bash
 python organize_brats.py \
-    --input_dir path/to/raw_dataset \
-    --output_dir data/processed
-The dataset will be organized into:
+  --input_dir path/to/raw_dataset \
+  --output_dir data/processed
+```
 
-text
-data/processed/
+Structure:
+
+```
+data/
 ├── train/
 ├── val/
 └── test/
-🧠 Training the Model
-bash
+```
+
+---
+
+## 🧠 Training
+
+```bash
 python train.py \
-    --data_dir data/processed/train \
-    --val_dir data/processed/val \
-    --epochs 100 \
-    --batch_size 4 \
-    --lr 1e-4 \
-    --model swinunet \
-    --output_dir runs/swinunet_exp1
-Features:
+  --data_dir data/train \
+  --val_dir data/val \
+  --epochs 100 \
+  --batch_size 4 \
+  --lr 1e-4 \
+  --model swinunet
+```
 
-Automatic checkpoint saving
-Training/validation logging
-Switchable model architecture (based on models.py)
-📊 Model Evaluation
-bash
+---
+
+## 📊 Evaluation
+
+```bash
 python evaluation.py \
-    --data_dir data/processed/test \
-    --checkpoint runs/swinunet_exp1/best_model.pth
-Metrics typically include:
+  --data_dir data/test \
+  --checkpoint runs/best_model.pth
+```
 
-Dice Score
-IoU
-Precision / Recall
-Accuracy
-🔍 Inference (Segmentation on New MRI)
-bash
+Metrics:
+
+* Dice Score
+* IoU
+* Precision / Recall
+* Accuracy
+
+---
+
+## 🔍 Inference
+
+```bash
 python inference.py \
-    --checkpoint runs/swinunet_exp1/best_model.pth \
-    --input_image path/to/mri_case.nii.gz \
-    --output_path outputs/prediction.nii.gz
-Output: Segmentation mask or probability map.
+  --checkpoint runs/best_model.pth \
+  --input_image sample.nii.gz \
+  --output_path output.nii.gz
+```
 
-🎨 Visualization
-bash
-python visualization.py \
-    --log_dir runs/swinunet_exp1 \
-    --save_dir runs/swinunet_exp1/figures
-Visualization tools include:
+---
 
-Predicted mask vs. ground truth
-Loss and metric curves
-Side‑by‑side MRI slices
-🌐 Web Application
-Launch the web app:
+## 🎨 Visualization
 
-bash
-python app.py
-Then open:
+```bash
+python visualization.py
+```
 
-text
-http://localhost:5000
+Includes:
+
+* Prediction vs Ground Truth
+* Training curves
+* MRI slice visualization
+
+---
+
+## 🌐 Web App
+
+```bash
+streamlit run app.py
+```
+
 Features:
 
-Upload MRI scans
-Run model inference
-Visualize segmentation output
-Download prediction mask
-🧩 SwinUNet Architecture
-The implementation in models.py is based on:
+* Upload MRI
+* Run segmentation
+* Visualize results
+* Download mask
 
-Swin Transformer encoder
-U‑Net‑style decoder
-Windowed self‑attention
-Skip connections
-This provides strong performance for 2D/3D medical segmentation tasks.
+---
 
-⚙️ Requirements
-Dependencies listed in requirements.txt, typically including:
+## 🧩 Model Architecture
 
-PyTorch
-NumPy
-SimpleITK / nibabel
-scikit-learn
-Matplotlib
-Flask / FastAPI / Streamlit (depending on app.py)
-📜 License
-Choose your preferred license, e.g.:
+* Swin Transformer encoder
+* U-Net style decoder
+* Skip connections
+* Window-based self-attention
 
-text
-This project is licensed under the MIT License.
+---
+
+## ⚙️ Requirements
+
+* PyTorch
+* NumPy
+* nibabel / SimpleITK
+* scikit-learn
+* Plotly / Streamlit
+
+---
+
+## 📜 License
+
+MIT License
