@@ -1,6 +1,6 @@
 # 🧠 MRI Segmentation with SwinUNet (PyTorch)
 
-A complete deep learning pipeline for 3D medical image segmentation using the **SwinUNet architecture** implemented in PyTorch.
+A complete deep learning pipeline for  medical image segmentation using the **SwinUNet architecture** implemented in PyTorch.
 
 ---
 
@@ -16,8 +16,6 @@ This project provides an **end-to-end framework** for MRI segmentation, includin
 * Visualization tools
 * Optional dataset organization (e.g., BraTS)
 * Interactive web application
-
-Designed for **research, prototyping, and medical AI applications**.
 
 ---
 
@@ -48,6 +46,7 @@ MRI_Segmentation_SwinUNet/
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/MRI_Segmentation_SwinUNet.git
+
 cd MRI_Segmentation_SwinUNet
 ```
 
@@ -88,51 +87,6 @@ python train.py \
   --batch_size 4 \
   --lr 1e-4 \
   --model swinunet
-```
-
----
-
-## 📊 Evaluation
-
-```bash
-python evaluation.py \
-  --data_dir data/test \
-  --checkpoint runs/best_model.pth
-```
-
-Metrics:
-
-* Dice Score
-* IoU
-* Precision / Recall
-* Accuracy
-
----
-
-## 🔍 Inference
-
-```bash
-python inference.py \
-  --checkpoint runs/best_model.pth \
-  --input_image sample.nii.gz \
-  --output_path output.nii.gz
-```
-
----
-
-## 🎨 Visualization
-
-```bash
-python visualization.py
-```
-
-Includes:
-
-* Prediction vs Ground Truth
-* Training curves
-* MRI slice visualization
-
----
 
 ## 🌐 Web App
 
@@ -145,7 +99,6 @@ Features:
 * Upload MRI
 * Run segmentation
 * Visualize results
-* Download mask
 
 ---
 
